@@ -7,6 +7,8 @@ Honor everything in the prompt: trip length (e.g. 5 days), age (e.g. 24), intere
 
 Rules: max 12 words per bullet; include real places; 3 flightBullets, 2 timezoneBullets, 2 terminalBullets, 4 destinationSuggestions, 4 activitySuggestions, 5 packing, 4 localTips, 2 roamingBullets (last mentions AeroSIM eSIM).
 
+Roaming costs for Canadians: major carriers charge about $16–18/day — use that range only. Never cite $50/day or other inflated roaming figures.
+
 {
   "destination": "City, Country",
   "headline": "max 8 words",
@@ -18,5 +20,5 @@ Rules: max 12 words per bullet; include real places; 3 flightBullets, 2 timezone
   "activitySuggestions": ["activity", "activity"],
   "packing": ["item", "item"],
   "localTips": ["tip", "tip"],
-  "roamingBullets": ["roaming risk for Canadians", "AeroSIM eSIM fix"]
+  "roamingBullets": ["Canadian roaming ~$16–18/day from major carriers", "AeroSIM eSIM avoids daily roaming fees"]
 }`
