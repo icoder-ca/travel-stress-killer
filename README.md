@@ -15,11 +15,18 @@ npm run dev
 
 Open http://localhost:5173
 
-Your local `.env` is already gitignored — keep your keys there only.
+**Temporary:** API keys are in `.env` in this repo for meetup judging — remove that file and rotate keys after the event.
 
-### Live demo (for judges)
+### Quick run (judges)
 
-Deploy to [Vercel](https://vercel.com) from this repo, then add `CURSOR_API_KEY` (and optionally `GROQ_API_KEY` for faster responses) in **Project → Settings → Environment Variables**. Never commit keys to GitHub.
+```bash
+git clone https://github.com/icoder-ca/travel-stress-killer.git
+cd travel-stress-killer
+npm install
+npm run dev
+```
+
+No extra setup — `.env` is included until the author removes it.
 
 ## API keys (server-side only)
 
