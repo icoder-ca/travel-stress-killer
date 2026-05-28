@@ -36,7 +36,7 @@ export function FlightLoader() {
       <div className="loader-bar">
         <span className="loader-bar-fill" />
       </div>
-      <p className="loader-hint">Building your preview…</p>
+      <p className="loader-hint">AI is building your personalized brief — this may take up to a minute</p>
     </section>
   )
 }

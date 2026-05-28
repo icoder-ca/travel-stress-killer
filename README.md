@@ -15,6 +15,12 @@ npm run dev
 
 Open http://localhost:5173
 
+Your local `.env` is already gitignored — keep your keys there only.
+
+### Live demo (for judges)
+
+Deploy to [Vercel](https://vercel.com) from this repo, then add `CURSOR_API_KEY` (and optionally `GROQ_API_KEY` for faster responses) in **Project → Settings → Environment Variables**. Never commit keys to GitHub.
+
 ## API keys (server-side only)
 
 Keys live in `.env` and are **never** sent to the browser. Add at least one:
@@ -29,9 +35,9 @@ Get keys from [Cursor Integrations](https://cursor.com/dashboard/integrations).
 
 ## Demo flow
 
-1. Click a quick pick or type a destination
-2. **Instant preview** appears in under 1 second
-3. AI upgrades the brief in the background when an API key is configured
+1. Click a quick pick or type a detailed trip (destination, days, age, interests)
+2. **Flight loader** shows while real AI builds your brief
+3. Cards animate in when the brief is ready — no fake city previews
 
 ## Stack
 

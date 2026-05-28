@@ -21,7 +21,6 @@ import { SFSymbol } from './components/SFSymbol'
 import { BulletList } from './components/BulletList'
 import { ExpandableTile } from './components/ExpandableTile'
 import { FlightLoader } from './components/FlightLoader'
-import { buildInstantBrief } from './lib/instantBrief'
 import './App.css'
 
 const QUICK = ['AC 15 to Tokyo', '7 day trip to Paris', 'BA 178 London', 'Calgary YYC']
@@ -36,8 +35,7 @@ export default function App() {
   const [brief, setBrief] = useState<TravelBrief | null>(null)
   const [visibleCards, setVisibleCards] = useState(0)
   const [error, setError] = useState<string | null>(null)
-  const [enhancing, setEnhancing] = useState(false)
-  const [source, setSource] = useState<'preview' | 'fast' | 'cursor'>('preview')
+  const [source, setSource] = useState<'fast' | 'cursor'>('cursor')
 
   const revealCards = useCallback(() => {
     setVisibleCards(0)
@@ -53,12 +51,8 @@ export default function App() {
     setQuery(q)
     setLoading(true)
     setError(null)
-    setEnhancing(true)
-    setSource('preview')
-
-    // Instant brief — judges see results in <1s
-    setBrief(buildInstantBrief(q))
-    revealCards()
+    setBrief(null)
+    setVisibleCards(0)
 
     try {
       const res = await fetch('/api/brief', {
@@ -70,10 +64,10 @@ export default function App() {
       if (!res.ok) throw new Error(data.error ?? 'Request failed')
       setBrief(data.brief)
       setSource(data.source === 'fast' ? 'fast' : 'cursor')
+      revealCards()
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong')
     } finally {
-      setEnhancing(false)
       setLoading(false)
     }
   }
@@ -149,27 +143,16 @@ export default function App() {
         </div>
       </section>
 
-      {loading && !brief && <FlightLoader />}
+      {loading && <FlightLoader />}
 
-      {enhancing && brief && (
-        <p className="enhancing-bar">
-          <span className="enhancing-dot" />
-          Upgrading your brief with AI…
-        </p>
-      )}
-
-      {brief && (
+      {brief && !loading && (
         <section className="results">
           <div className={`headline-card compact ${visibleCards >= 1 ? 'visible' : ''}`}>
             <p className="dest-label">{brief.destination}</p>
             <h2>{brief.headline}</h2>
             <span className={`source-pill ${source}`}>
               <SFSymbol icon={sfSparkles} size={12} color="#fff" />
-              {source === 'preview'
-                ? 'Preview'
-                : source === 'fast'
-                  ? 'AI brief'
-                  : 'Cursor AI'}
+              {source === 'fast' ? 'AI brief' : 'Cursor AI'}
             </span>
           </div>
 
