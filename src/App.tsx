@@ -164,7 +164,7 @@ export default function App() {
             <div className="wings-copy">
               <p className="wings-eyebrow">The wings to your journey</p>
               <p className="wings-line">
-                Land connected — local data eSIM, zero roaming shock.
+                Skip $16-$18/day roaming — get your eSIM from AeroSIM on iOS.
               </p>
             </div>
             <a
@@ -173,7 +173,7 @@ export default function App() {
               rel="noopener noreferrer"
               className="btn-wings"
             >
-              Get AeroSIM
+              Get AeroSIM on iOS
               <SFIcon icon={sfArrowRight} size={14} color="#fff" />
             </a>
           </div>

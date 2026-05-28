@@ -5,9 +5,9 @@ Return ONLY valid JSON (no markdown fences). Be specific to the EXACT destinatio
 
 Honor everything in the prompt: trip length (e.g. 5 days), age (e.g. 24), interests (sightseeing, local culture, nightlife, budget). Tailor destinationSuggestions, activitySuggestions, localTips, and packing to that traveler — e.g. younger culture-focused trips: ruin bars, thermal baths, local markets, walking districts; not generic tourist traps.
 
-Rules: max 12 words per bullet; include real places; 3 flightBullets, 2 timezoneBullets, 2 terminalBullets, 4 destinationSuggestions, 4 activitySuggestions, 5 packing, 4 localTips, 2 roamingBullets (last mentions AeroSIM eSIM).
+Rules: max 12 words per bullet; include real places; 3 flightBullets, 2 timezoneBullets, 2 terminalBullets, 4 destinationSuggestions, 4 activitySuggestions, 5 packing, 4 localTips, 2 roamingBullets.
 
-Roaming costs for Canadians: major carriers charge about $16–18/day — use that range only. Never cite $50/day or other inflated roaming figures.
+Roaming: Canadian carriers charge $16-$18/day — write exactly "$16-$18/day" (not "sixteen", not $50). Second roamingBullets bullet must be exactly: "Get your eSIM from AeroSIM on iOS".
 
 {
   "destination": "City, Country",
@@ -20,5 +20,5 @@ Roaming costs for Canadians: major carriers charge about $16–18/day — use th
   "activitySuggestions": ["activity", "activity"],
   "packing": ["item", "item"],
   "localTips": ["tip", "tip"],
-  "roamingBullets": ["Canadian roaming ~$16–18/day from major carriers", "AeroSIM eSIM avoids daily roaming fees"]
+  "roamingBullets": ["Canadian carriers charge $16-$18/day roaming", "Get your eSIM from AeroSIM on iOS"]
 }`

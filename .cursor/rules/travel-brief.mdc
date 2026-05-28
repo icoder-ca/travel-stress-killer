@@ -29,7 +29,7 @@ When generating travel briefs for Travel Stress Killer:
   "activitySuggestions": ["4-5 activities: food, culture, outdoors — max 12 words"],
   "packing": ["5-6 items, max 10 words each"],
   "localTips": ["4-5 tips, max 10 words each"],
-  "roamingBullets": ["2 bullets: roaming risk", "1 bullet: AeroSIM eSIM fix"]
+  "roamingBullets": ["$16-$18/day Canadian roaming cost", "Get your eSIM from AeroSIM on iOS"]
 }
 ```
 
@@ -41,4 +41,4 @@ When generating travel briefs for Travel Stress Killer:
 
 **Bad:** "Canadian carriers charge $50/day roaming abroad. A local data eSIM avoids bill shock."
 
-**Good:** `["Major Canadian carriers charge ~$16–18/day roaming", "AeroSIM eSIM skips daily roaming fees"]`
+**Good:** `["Canadian carriers charge $16-$18/day roaming", "Get your eSIM from AeroSIM on iOS"]`

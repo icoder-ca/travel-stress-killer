@@ -18,6 +18,30 @@ function objectToBullets(obj: unknown, keys: string[]): string[] {
   return keys.map((k) => record[k]).filter((v) => typeof v === 'string' && v.trim())
 }
 
+const ROAMING_COST = '$16-$18/day'
+const AEROSIM_CTA = 'Get your eSIM from AeroSIM on iOS'
+
+/** Enforce $16-$18/day wording and AeroSIM iOS CTA in roaming bullets */
+export function normalizeRoamingBullets(bullets: string[]): string[] {
+  const esimCta = AEROSIM_CTA
+  const defaultRoaming = `Canadian carriers charge ${ROAMING_COST} roaming`
+
+  let costLine =
+    bullets.find((b) => !/aerosim|esim|ios/i.test(b)) ?? bullets[0] ?? defaultRoaming
+
+  costLine = costLine
+    .replace(/\$?\s*16\s*[–—-]\s*18\s*(\/\s*)?day/gi, ROAMING_COST)
+    .replace(/~\s*\$16-\$18\/day/gi, ROAMING_COST)
+    .replace(/\b(sixteen|eighteen)(\s+to\s+(sixteen|eighteen))?/gi, ROAMING_COST)
+    .replace(/\$50[^.]*day/gi, ROAMING_COST)
+
+  if (!costLine.includes(ROAMING_COST)) {
+    costLine = defaultRoaming
+  }
+
+  return [costLine, esimCta]
+}
+
 export function normalizeBrief(raw: Record<string, unknown>): TravelBrief | null {
   const destination = typeof raw.destination === 'string' ? raw.destination : ''
   const headline = typeof raw.headline === 'string' ? raw.headline : ''
@@ -55,7 +79,9 @@ export function normalizeBrief(raw: Record<string, unknown>): TravelBrief | null
     ),
     packing: toBullets(raw.packing, 6),
     localTips: toBullets(raw.localTips, 5),
-    roamingBullets: toBullets(raw.roamingBullets ?? raw.roamingWarning, 3),
+    roamingBullets: normalizeRoamingBullets(
+      toBullets(raw.roamingBullets ?? raw.roamingWarning, 3),
+    ),
   }
 }
 
