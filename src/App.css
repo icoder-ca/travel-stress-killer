@@ -660,6 +660,15 @@
   text-align: left;
 }
 
+.tile-header-static {
+  cursor: default;
+}
+
+.tile.always-open .tile-body {
+  border-top: none;
+  padding-top: 0;
+}
+
 .tile-title-row {
   display: flex;
   align-items: center;
@@ -791,6 +800,11 @@
 
 .roaming-bullets li {
   font-size: 0.78rem;
+}
+
+.roaming-bullets li:last-child {
+  font-weight: 600;
+  color: var(--sky-700);
 }
 
 .footer {

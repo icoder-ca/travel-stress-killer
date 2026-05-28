@@ -312,12 +312,8 @@ export default function App() {
               iconColor="var(--amber-600)"
               className="tile-warn"
               visible={visibleCards >= 11}
-              preview={
-                <>
-                  <BulletList items={brief.roamingBullets} limit={1} />
-                  {moreLabel(brief.roamingBullets.length, 1)}
-                </>
-              }
+              alwaysOpen
+              preview={null}
             >
               <BulletList items={brief.roamingBullets} className="roaming-bullets" />
             </ExpandableTile>

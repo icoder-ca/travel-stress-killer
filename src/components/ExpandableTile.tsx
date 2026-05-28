@@ -12,6 +12,8 @@ type Props = {
   visible?: boolean
   className?: string
   defaultExpanded?: boolean
+  /** Show full content always — no collapse (e.g. roaming warning) */
+  alwaysOpen?: boolean
 }
 
 export function ExpandableTile({
@@ -23,8 +25,27 @@ export function ExpandableTile({
   visible = true,
   className = '',
   defaultExpanded = false,
+  alwaysOpen = false,
 }: Props) {
-  const [expanded, setExpanded] = useState(defaultExpanded)
+  const [expanded, setExpanded] = useState(defaultExpanded || alwaysOpen)
+
+  const titleRow = (
+    <div className="tile-title-row">
+      <SFSymbol icon={icon} size={18} color={iconColor} />
+      <h3>{title}</h3>
+    </div>
+  )
+
+  if (alwaysOpen) {
+    return (
+      <article
+        className={`tile expanded always-open ${visible ? 'visible' : ''} ${className}`.trim()}
+      >
+        <div className="tile-header tile-header-static">{titleRow}</div>
+        <div className="tile-body open">{children}</div>
+      </article>
+    )
+  }
 
   return (
     <article className={`tile ${expanded ? 'expanded' : ''} ${visible ? 'visible' : ''} ${className}`.trim()}>
@@ -34,10 +55,7 @@ export function ExpandableTile({
         onClick={() => setExpanded((e) => !e)}
         aria-expanded={expanded}
       >
-        <div className="tile-title-row">
-          <SFSymbol icon={icon} size={18} color={iconColor} />
-          <h3>{title}</h3>
-        </div>
+        {titleRow}
         <SFSymbol
           icon={expanded ? sfChevronUp : sfChevronDown}
           size={14}
