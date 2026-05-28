@@ -1,0 +1,44 @@
+---
+description: Travel Stress Killer AI output — concise, skimable briefs
+globs: server/**/*.ts
+alwaysApply: false
+---
+
+# Travel brief output rules
+
+When generating travel briefs for Travel Stress Killer:
+
+## Tone & length
+
+- **Concise only** — every field must be skimable in under 3 seconds
+- **Bullets over paragraphs** — no multi-sentence blocks except headline
+- **Max words per bullet**: 12 words (packing/tips: 10 words)
+- **No filler** — cut "typically", "remember that", "it's important to"
+
+## Required format (JSON)
+
+```json
+{
+  "destination": "City, Country",
+  "headline": "max 8 words, punchy",
+  "flightBullets": ["3-4 bullets: route, timing, or airport note"],
+  "weather": { "temp": "e.g. 32°C", "condition": "3-5 words", "tip": "max 8 words" },
+  "timezoneBullets": ["2-3 bullets: offset, local time name, jet lag tip"],
+  "terminalBullets": ["2-3 bullets: airport, terminal, gate/security tip"],
+  "destinationSuggestions": ["4-5 places: neighborhood, landmark, or day trip — max 12 words"],
+  "activitySuggestions": ["4-5 activities: food, culture, outdoors — max 12 words"],
+  "packing": ["5-6 items, max 10 words each"],
+  "localTips": ["4-5 tips, max 10 words each"],
+  "roamingBullets": ["2 bullets: roaming risk", "1 bullet: AeroSIM eSIM fix"]
+}
+```
+
+## Examples
+
+**Bad:** "International arrivals at Narita typically land Terminal 1 or 2. Allow 60–90 minutes for immigration, baggage, and JR transfer into the city."
+
+**Good:** `["Narita T1/T2 for intl arrivals", "Plan 60–90 min for immigration + bags", "JR or Limousine bus to Tokyo"]`
+
+**Bad:** "Canadian carriers often charge $12–15/day roaming in Japan. A local data eSIM avoids bill shock."
+
+**Good:** `["Roaming can cost $12–15/day from Canada", "Local eSIM avoids bill shock — use AeroSIM"]`

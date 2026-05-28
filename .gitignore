@@ -1,0 +1,27 @@
+# Dependencies & build
+node_modules
+dist
+dist-ssr
+*.local
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*crsr_*
+*sk-*
+
+# Logs & OS
+logs
+*.log
+npm-debug.log*
+.DS_Store
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.cursor/*
+!.cursor/rules/
